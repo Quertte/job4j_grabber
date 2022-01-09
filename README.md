@@ -1,3 +1,5 @@
+[![Java CI with Maven](https://github.com/Quertte/job4j_grabber/actions/workflows/maven.yml/badge.svg)](https://github.com/Quertte/job4j_grabber/actions/workflows/maven.yml)
+
 # Агрегатор Java вакансий.
 
 ### Техническое задание
