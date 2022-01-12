@@ -7,6 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class SqlRuParse {
     public static void main(String[] args) throws IOException {
@@ -19,10 +20,11 @@ public class SqlRuParse {
             System.out.println(href.text());
         }
 */
-
         Elements row = doc.select(".postslisttopic");
         for (Element td : row) {
             Element parent = td.parent();
+            System.out.println(td.child(0).text());
+            System.out.println(td.child(0).attr("href"));
             System.out.println(parent.child(5).text());
         }
     }
