@@ -7,20 +7,21 @@ import java.util.Map;
 public class SqlRuDateTimeParser implements DateTimeParser {
 
     private static final DateTimeFormatter FORMATTER =
-            DateTimeFormatter.ofPattern("d-MMM-yy HH:mm");
+            DateTimeFormatter.ofPattern("d MMMM yy HH:mm");
 
     private static final Map<String, String> MONTHS = Map.ofEntries(
-            Map.entry("янв", "янв."),
-            Map.entry("фев", "фев."),
-            Map.entry("мар", "мар."),
-            Map.entry("апр", "апр."),
+            Map.entry("янв", "января"),
+            Map.entry("фев", "февраля"),
+            Map.entry("мар", "марта"),
+            Map.entry("апр", "апреля"),
             Map.entry("май", "мая"),
-            Map.entry("июн", "июн."),
-            Map.entry("июл", "июл."),
-            Map.entry("сен", "сен."),
-            Map.entry("окт", "окт."),
-            Map.entry("ноя", "ноя."),
-            Map.entry("дек", "дек.")
+            Map.entry("июн", "июня"),
+            Map.entry("июл", "июля"),
+            Map.entry("авг", "августа"),
+            Map.entry("сен", "сентября"),
+            Map.entry("окт", "октября"),
+            Map.entry("ноя", "ноября"),
+            Map.entry("дек", "декабря")
     );
 
     @Override
@@ -33,7 +34,7 @@ public class SqlRuDateTimeParser implements DateTimeParser {
         } else {
             var dateTime = parse.split(",");
             var month = dateTime[0].split(" ");
-            var localDateTime = month[0] + "-" + MONTHS.get(month[1]) + "-" + month[2]
+            var localDateTime = month[0] + " " + MONTHS.get(month[1]) + " " + month[2]
                     +  dateTime[1];
             date = LocalDateTime.parse(localDateTime, FORMATTER);
         }
