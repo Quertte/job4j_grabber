@@ -33,5 +33,4 @@ public class SqlRuParse {
         String name = row.first().text().substring(0, row.get(1).text().length() - 9);
         return new Post(name, url, description, new SqlRuDateTimeParser().parse(date));
     }
-
 }
