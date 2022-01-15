@@ -1,4 +1,4 @@
-package ru.job4j.html;
+package ru.job4j.grabber;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -43,8 +43,7 @@ public class SqlRuParse implements Parse {
         String description = row.get(1).text();
         row = doc.select(".msgFooter");
         String date = row.first().text().substring(0, row.get(0).text().indexOf(" ["));
-        row = doc.select(".messageHeader");
-        String name = row.first().text().substring(0, row.first().text().indexOf(" ["));
+        String name = doc.select(".messageHeader").get(0).ownText();
         return new Post(name, link, description, parser.parse(date));
     }
 }
