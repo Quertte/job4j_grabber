@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import ru.job4j.grabber.utils.SqlRuDateTimeParser;
 
 import java.io.IOException;
 
@@ -20,16 +21,17 @@ public class SqlRuParse {
                 System.out.println(parent.child(5).text());
             }
         }
-        System.out.println(descAndDate(
-                "https://www.sql.ru/forum/1341435/postgresql-developer-middle-300-net").getValue());
     }
 
-    private static Pair<String, String> descAndDate(String url) throws IOException {
+    private static Post detailPost(String url) throws IOException {
         Document doc = Jsoup.connect(url).get();
         Elements row = doc.select(".msgBody");
         String description = row.get(1).text();
         row = doc.select(".msgFooter");
-        String date = row.first().text().substring(0, row.get(0).text().indexOf("["));
-        return new Pair<>(description, date);
+        String date = row.first().text().substring(0, row.get(0).text().indexOf(" ["));
+        row = doc.select(".messageHeader");
+        String name = row.first().text().substring(0, row.get(1).text().length() - 9);
+        return new Post(name, url, description, new SqlRuDateTimeParser().parse(date));
     }
+
 }
