@@ -30,7 +30,7 @@ public class PsqlStore implements Store, AutoCloseable {
     public static Properties load() {
         Properties config = new Properties();
         try (InputStream in =
-                     AlertRabbit.class.getClassLoader().getResourceAsStream("rabbit.properties")) {
+                     PsqlStore.class.getClassLoader().getResourceAsStream("app.properties")) {
             config.load(in);
         } catch (Exception e) {
             e.printStackTrace();
