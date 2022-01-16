@@ -85,13 +85,6 @@ public class Post {
 
     @Override
     public String toString() {
-//        return "Post{"
-//                + "id=" + id
-//                + ", title='" + title + '\''
-//                + ", link='" + link + '\''
-//                + ", description='" + description + '\''
-//                + ", created=" + created
-//                + '}';
         return String.format("id: %s, title: %s, description: %s, link: %s, created: %s\n\n",
                 id, title, link, description, created);
     }
