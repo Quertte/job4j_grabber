@@ -2,7 +2,6 @@ package ru.job4j.grabber;
 
 import ru.job4j.grabber.utils.DateTimeParser;
 import ru.job4j.grabber.utils.SqlRuDateTimeParser;
-import ru.job4j.quartz.AlertRabbit;
 
 import java.io.InputStream;
 import java.sql.*;
